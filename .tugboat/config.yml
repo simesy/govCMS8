@@ -47,7 +47,6 @@ services:
         - echo "${TUGBOAT_ROOT}"
         - pwd
 
-
         #- composer create-project govcms/govcms8-project govcms --stability dev --no-interaction --verbose
         #- ln -snf "${TUGBOAT_ROOT}/govcms/docroot" "${DOCROOT}"
         #- ls -al ${DOCROOT}
@@ -106,6 +105,7 @@ services:
         #- git clone -b $TUGBOAT_PREVIEW https://github.com/${TUGBOAT_REPO} "${DOCROOT}/themes/custom/govcms8_uikit_starter"
 
         ls ./the-drupalz
+        echo "is it just me"
 
         #- cd "${DOCROOT}/themes/custom/govcms8_uikit_starter"
         #- npm run setup
