@@ -41,7 +41,9 @@ services:
 
         # Generic govcms project, however use our Satis.
         - composer create-project --no-install drupal-composer/drupal-project:8.x-dev the-drupalz --no-interaction
+        - ls
         - cd the-drupalz
+        - ls
         - cp composer.json composer-copy.json
         - cat composer-copy.json
         - cat composer-copy.json \
