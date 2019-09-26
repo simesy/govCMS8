@@ -1,5 +1,5 @@
 services:
-  php:
+  lamp:
     # Use PHP 7.2 with Apache to serve the Drupal site
     image: simesy/smaller-tugboat
 
@@ -35,17 +35,13 @@ services:
         # - curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
         # - apt-get install -y nodejs
 
-#       # Install drush-launcher & jq
-        # - wget -O /usr/local/bin/drush https://github.com/drush-ops/drush-launcher/releases/download/0.6.0/drush.phar && chmod +x /usr/local/bin/drush
-        # - wget -O /usr/local/bin/jq "https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64" && chmod +x /usr/local/bin/jq
-
-        - mkdir -p /var
         # Generic govcms project, however use our Satis.
         - composer create-project --no-install govcms/govcms8-project /var/govcms --no-interaction
         - cp /var/govcms/composer.json /var/govcms/composer-copy.json
         - cat /var/govcms/composer-copy.json | jq .repositories='{"govcms":{"type":"composer","url":"https://satis.govcms.gov.au"},"packagist.org":false}' | tee /var/govcms/composer.json
         - composer --working-dir="/var/govcms" update
         - composer clear-cache
+        - rm -Rf /var/www/html && ln -s /var/govcms/docroot /var/www/html
 
         #- # Use the tugboat-specific Drupal settings
         #- cp "${TUGBOAT_ROOT}/.tugboat/settings.php" "${DOCROOT}/sites/default/"
