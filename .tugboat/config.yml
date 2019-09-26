@@ -106,6 +106,7 @@ services:
 
         ls ./the-drupalz
         echo "is it just me"
+        echo "maybe..."
 
         #- cd "${DOCROOT}/themes/custom/govcms8_uikit_starter"
         #- npm run setup
