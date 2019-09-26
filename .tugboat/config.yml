@@ -53,7 +53,7 @@ services:
         - pwd
         - printenv
         # Add GovCMS profile from path.
-        - git co -b tugboat-latest
+        - git checkout -b tugboat-latest
         - cat /var/govcms/composer-copy.json | jq .repositories='{"govcms":{"type":"composer","url":"https://satis.govcms.gov.au"},{"type":"path","url":"/var/lib/tugboat"},"packagist.org":false}' | tee /var/govcms/composer.json \
         - composer --working-dir=/var/govcms require govcms/govcms:dev-tugboat-latest
 
