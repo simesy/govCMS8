@@ -44,9 +44,8 @@ services:
         - cp ${TUGBOAT_ROOT}/workspace/composer.json ${TUGBOAT_ROOT}/workspace/composer-copy.json
         - ls ${TUGBOAT_ROOT}/workspace
         - cat ${TUGBOAT_ROOT}/workspace/composer-copy.json
-        - cat ${TUGBOAT_ROOT}/workspace/composer-copy.json \
-          | jq .repositories='{"govcms":{"type":"composer","url":"https://satis.govcms.gov.au"},"packagist.org":false}' \
-          | tee ${TUGBOAT_ROOT}/workspace/composer.json
+        - cat ${TUGBOAT_ROOT}/workspace/composer-copy.json | jq .repositories
+        - cat ${TUGBOAT_ROOT}/workspace/composer-copy.json | jq .repositories='{"govcms":{"type":"composer","url":"https://satis.govcms.gov.au"},"packagist.org":false}' | tee ${TUGBOAT_ROOT}/workspace/composer.json
         - composer -d ${TUGBOAT_ROOT}/workspace/ update
         - composer clear-cache
 
