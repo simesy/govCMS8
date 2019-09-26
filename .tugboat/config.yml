@@ -23,14 +23,6 @@ services:
     commands:
       # Commands that set up the basic preview infrastructure
       init:
-        - printenv
-        #- apt-get update
-        # Install bz2 and zip extensions
-        #- apt-get install -y libbz2-dev
-        #- docker-php-ext-install opcache bz2 zip
-        # Enable headers
-        #- a2enmod headers rewrite
-
         # Install node10/npm to build source
         # - curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
         # - apt-get install -y nodejs
@@ -42,14 +34,11 @@ services:
         - composer --working-dir="/var/govcms" update
         - composer clear-cache
         - rm -Rf /var/www/html && ln -s /var/govcms/docroot /var/www/html
+        - ls /var/www/html
 
         #- # Use the tugboat-specific Drupal settings
         #- cp "${TUGBOAT_ROOT}/.tugboat/settings.php" "${DOCROOT}/sites/default/"
         #- composer
-
-        # Install the fresh GovCMS site and do not send email notification
-        # - build/bin/phing -f build/phing/build.xml build:install
-        #- drush -r "${DOCROOT}" site-install govcms install_configure_form.update_status_module='array(FALSE,FALSE)' -y
 
         # Install the GovCMS default content
         #- drush -r "${DOCROOT}" pm-enable govcms8_default_content -y
