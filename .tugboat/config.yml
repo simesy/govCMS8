@@ -1,7 +1,7 @@
 services:
   php:
     # Use PHP 7.2 with Apache to serve the Drupal site
-    image: tugboatqa/php:7.2-apache
+    image: romeoz/docker-apache-php
 
     # Set this as the default service. This does a few things
     #   1. Clones the git repository into the service container
@@ -24,6 +24,7 @@ services:
       # Commands that set up the basic preview infrastructure
       init:
         - printenv
+        - ls
         #- apt-get update
         # Install bz2 and zip extensions
         #- apt-get install -y libbz2-dev
