@@ -55,10 +55,10 @@ services:
 
         # Install the fresh GovCMS site and do not send email notification
         # - build/bin/phing -f build/phing/build.xml build:install
-        - drush -r /var/govcms/docroot site-install govcms install_configure_form.update_status_module='array(FALSE,FALSE)' -y
+        - cd /var/govcms && drush -r /var/govcms/docroot site-install govcms install_configure_form.update_status_module='array(FALSE,FALSE)' -y
 
         # Install the GovCMS default content
-        - drush -r /var/govcms/docroot pm-enable govcms8_default_content -y
+        - cd /var/govcms && drush -r /var/govcms/docroot pm-enable govcms8_default_content -y
 
         # Copy the files directory from an external server. The public
         # SSH key found in the Tugboat Repository configuration must be
