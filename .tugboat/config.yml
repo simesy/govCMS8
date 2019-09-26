@@ -55,7 +55,7 @@ services:
 
         # Install the fresh GovCMS site and do not send email notification
         # - build/bin/phing -f build/phing/build.xml build:install
-        - cd /var/govcms && drush -r /var/govcms/docroot site-install govcms install_configure_form.update_status_module='array(FALSE,FALSE)' -y
+        # - cd /var/govcms && drush -r /var/govcms/docroot site-install govcms install_configure_form.update_status_module='array(FALSE,FALSE)' -y
 
         # Install the GovCMS default content
         #- cd /var/govcms && drush -r /var/govcms/docroot pm-enable govcms8_default_content -y
@@ -106,7 +106,7 @@ services:
 
   # What to call the service hosting MySQL. This name also acts as the
   # hostname to access the service by from the php service.
-  db:
+  mysql:
     # Use the latest available 5.x version of MySQL
     image: tugboatqa/mysql:5
 
