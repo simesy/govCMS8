@@ -41,7 +41,7 @@ services:
         - chmod +x /usr/local/bin/drush
 
         # Generic govcms project, however use our Satis.
-        - composer create-project drupal-composer/drupal-project:8.x-dev the-drupalz --no-interaction
+        - composer create-project --no-install drupal-composer/drupal-project:8.x-dev the-drupalz --no-interaction
         - cd the-drupalz
         - cp composer.json composer-copy.json
         - cat composer-copy.json \
