@@ -44,10 +44,11 @@ services:
         - composer create-project --no-install drupal-composer/drupal-project:8.x-dev the-drupalz --no-interaction
         - cd the-drupalz
         - cp composer.json composer-copy.json
+        - cat composer-copy.json
         - cat composer-copy.json \
           | jq .repositories='{"govcms":{"type":"composer","url":"https://satis.govcms.gov.au"},"packagist.org":false}' \
           | tee composer.json
-        - composer update -vvv
+        - composer update
         - composer clear-cache
 
         #- composer create-project govcms/govcms8-project govcms --stability dev --no-interaction --verbose
