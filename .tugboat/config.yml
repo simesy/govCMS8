@@ -49,15 +49,22 @@ services:
       # and update steps, because the results of those are inherited
       # from the base preview.
       build:
-        # Any code push or refresh, we re-install.
 
+        - pwd
+        - printenv
+        # Add GovCMS profile from path.
+        - git co -b tugboat-latest
+        - cat /var/govcms/composer-copy.json | jq .repositories='{"govcms":{"type":"composer","url":"https://satis.govcms.gov.au"},{"type":"path","url":"/var/lib/tugboat"},"packagist.org":false}' | tee /var/govcms/composer.json \
+        - composer --working-dir=/var/govcms require govcms/govcms:dev-tugboat-latest
+
+        # Any code push or refresh, we re-install.
         - composer --working-dir=/var/govcms update
 
-        # Install the fresh GovCMS site and do not send email notification
-        # - build/bin/phing -f build/phing/build.xml build:install
-        - cd /var/govcms && drush -r /var/govcms/docroot site-install govcms install_configure_form.update_status_module='array(FALSE,FALSE)' -y
 
-        # Install the GovCMS default content
+
+
+        - composer --working-dir=/var/govcms update
+        - cd /var/govcms && drush -r /var/govcms/docroot site-install govcms install_configure_form.update_status_module='array(FALSE,FALSE)' -y
         - cd /var/govcms && drush -r /var/govcms/docroot pm-enable govcms8_default_content -y
 
         # Copy the files directory from an external server. The public
