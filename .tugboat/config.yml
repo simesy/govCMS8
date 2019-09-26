@@ -40,16 +40,13 @@ services:
         - wget -O /usr/local/bin/jq "https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64" && chmod +x /usr/local/bin/jq
 
         # Generic govcms project, however use our Satis.
-        - composer create-project --no-install drupal-composer/drupal-project:8.x-dev the-drupalz --no-interaction
-        - ls
-        - cd the-drupalz
-        - ls
-        - cp composer.json composer-copy.json
+        - composer create-project --no-install drupal-composer/drupal-project:8.x-dev ${TUGBOAT_ROOT}/workspace --no-interaction
+        - cp  ${TUGBOAT_ROOT}/workspace/composer.json composer-copy.json
         - cat composer-copy.json
-        - cat composer-copy.json \
+        - cat ${TUGBOAT_ROOT}/workspace/composer-copy.json \
           | jq .repositories='{"govcms":{"type":"composer","url":"https://satis.govcms.gov.au"},"packagist.org":false}' \
-          | tee composer.json
-        - composer update
+          | tee ${TUGBOAT_ROOT}/workspace/composer.json
+        - composer -d ${TUGBOAT_ROOT}/workspace/ update
         - composer clear-cache
 
         #- composer create-project govcms/govcms8-project govcms --stability dev --no-interaction --verbose
