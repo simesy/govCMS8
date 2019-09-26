@@ -51,6 +51,8 @@ services:
       build:
         # Any code push or refresh, we re-install.
 
+        - composer update
+
         # Install the fresh GovCMS site and do not send email notification
         # - build/bin/phing -f build/phing/build.xml build:install
         - drush -r /var/govcms/docroot site-install govcms install_configure_form.update_status_module='array(FALSE,FALSE)' -y
