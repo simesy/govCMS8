@@ -106,7 +106,7 @@ services:
   # hostname to access the service by from the php service.
   db:
     # Use the latest available 5.x version of MySQL
-    image: bitnami/mysql
+    image: tugboatqa/mysql:5
 
     # A set of commands to run while building this service
     commands:
