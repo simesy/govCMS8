@@ -35,10 +35,9 @@ services:
         # - curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
         # - apt-get install -y nodejs
 
-#       # Install drush-launcher
-        - wget -O /usr/local/bin/drush
-          https://github.com/drush-ops/drush-launcher/releases/download/0.6.0/drush.phar
-        - chmod +x /usr/local/bin/drush
+#       # Install drush-launcher & jq
+        - wget -O /usr/local/bin/drush https://github.com/drush-ops/drush-launcher/releases/download/0.6.0/drush.phar && chmod +x /usr/local/bin/drush
+        - wget -O /usr/local/bin/jq "https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64" && chmod +x /usr/local/bin/jq
 
         # Generic govcms project, however use our Satis.
         - composer create-project --no-install drupal-composer/drupal-project:8.x-dev the-drupalz --no-interaction
