@@ -103,10 +103,6 @@ services:
         #- rm -rf ${DOCROOT}/themes/custom/govcms8_uikit_starter
         #- git clone -b $TUGBOAT_PREVIEW https://github.com/${TUGBOAT_REPO} "${DOCROOT}/themes/custom/govcms8_uikit_starter"
 
-        - ls ./the-drupalz
-        - echo "is it just me"
-        - echo "maybe..."
-
         #- cd "${DOCROOT}/themes/custom/govcms8_uikit_starter"
         #- npm run setup
         #- npm run gulp
