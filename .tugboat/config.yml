@@ -33,8 +33,7 @@ services:
         - cat /var/govcms/composer-copy.json | jq .repositories='{"govcms":{"type":"composer","url":"https://satis.govcms.gov.au"},"packagist.org":false}' | tee /var/govcms/composer.json
         - composer --working-dir="/var/govcms" update
         - composer clear-cache
-        - rm -Rf /var/www/html && ln -s /var/govcms/docroot /var/www/html
-        - ls /var/www/html
+        - rm -Rf /var/www/app && ln -s /var/govcms/docroot /var/www/app
 
         #- # Use the tugboat-specific Drupal settings
         #- cp "${TUGBOAT_ROOT}/.tugboat/settings.php" "${DOCROOT}/sites/default/"
