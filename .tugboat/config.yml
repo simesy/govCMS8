@@ -1,5 +1,5 @@
 services:
-  lamp:
+  app:
     # Use PHP 7.2 with Apache to serve the Drupal site
     image: simesy/smaller-tugboat
 
@@ -98,9 +98,9 @@ services:
 
   # What to call the service hosting MySQL. This name also acts as the
   # hostname to access the service by from the php service.
-  mysql:
+  db:
     # Use the latest available 5.x version of MySQL
-    image: bitnami/mysql
+    image: tugboatqa/mysql:5
 
     # A set of commands to run while building this service
     commands:
