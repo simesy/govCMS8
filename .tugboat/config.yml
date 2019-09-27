@@ -49,7 +49,7 @@ services:
         - composer create-project -n --no-install govcms/govcms8-project /var/govcms
         - cd /var/govcms && cp composer.json composer-copy.json && cat composer-copy.json | jq .repositories='{"govcms":{"type":"composer","url":"https://satis.govcms.gov.au"},"tugboat":{"type":"path","url":"'"${TUGBOAT_ROOT}"'"},"packagist.org":false}' | tee composer.json
         - composer --working-dir=/var/govcms require govcms/govcms:dev-tugboat-latest
-        - mkdir -p /var/govcms/docroot && ln -snfF "/var/govcms/docroot" "${DOCROOT}"
+        - ln -snf "/var/govcms/docroot" "${DOCROOT}"
 
         # Prepare for install.
         - cp "${TUGBOAT_ROOT}/.tugboat/settings.php" /var/govcms/docroot/sites/default/
@@ -59,7 +59,6 @@ services:
         - find "/var/govcms/docroot/sites/default/files" -type f -exec chmod 0664 {} \;
 
         # Install the site.
-        - composer --working-dir=/var/govcms update
-        -
+        - cd /var/govcms && drush -r /var/govcms/docroot sql:drop --database=tugboat
         - cd /var/govcms && drush -r /var/govcms/docroot site-install govcms install_configure_form.update_status_module='array(FALSE,FALSE)' -y
         - cd /var/govcms && drush -r /var/govcms/docroot pm-enable govcms8_default_content -y
