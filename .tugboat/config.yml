@@ -55,7 +55,7 @@ services:
         # Add GovCMS profile from path.
         - git reset --hard
         - git checkout -b tugboat-latest
-        - cp composer.json composer-copy.json
+        - cp /var/govcms/composer.json /var/govcms/composer-copy.json
         - cat /var/govcms/composer-copy.json | jq .repositories='{"govcms":{"type":"composer","url":"https://satis.govcms.gov.au"},{"type":"path","url":"/var/lib/tugboat"},"packagist.org":false}' | tee /var/govcms/composer.json \
         - composer --working-dir=/var/govcms require govcms/govcms:dev-tugboat-latest
 
