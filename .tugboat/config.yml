@@ -56,7 +56,7 @@ services:
         - git reset --hard
         - git checkout -b tugboat-latest
         - cp /var/govcms/composer.json /var/govcms/composer-copy.json
-        - cat /var/govcms/composer-copy.json | jq .repositories='{"govcms":{"type":"composer","url":"https://satis.govcms.gov.au"},{"type":"path","url":"/var/lib/tugboat"},"packagist.org":false}' | tee /var/govcms/composer.json \
+        - cat /var/govcms/composer-copy.json | jq .repositories='{"govcms":{"type":"composer","url":"https://satis.govcms.gov.au"},"latest":{"type":"path","url":"/var/lib/tugboat"},"packagist.org":false}' | tee /var/govcms/composer.json \
         - composer --working-dir=/var/govcms require govcms/govcms:dev-tugboat-latest
 
         # Any code push or refresh, we re-install.
