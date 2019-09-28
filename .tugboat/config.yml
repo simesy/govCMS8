@@ -60,7 +60,7 @@ services:
 
         # Install the site.
         - rm -rf /var/govcms/docroot/profiles/govcms/config/sync # Presence break the installer, not sure where it comes from!
-        - cd /var/govcms && drush -r "${DOCROOT}" site:install govcms install_configure_form.update_status_module='array(FALSE,FALSE)' -y -d
+        - cd /var/govcms && drush -r "${DOCROOT}" site:install govcms install_configure_form.update_status_module='array(FALSE,FALSE)' -y
         - cd /var/govcms && drush -r "${DOCROOT}" pm:enable govcms8_default_content -y
 
         # Cuts down on image size, makes initial preview loading slower.
