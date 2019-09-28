@@ -10,7 +10,7 @@ services:
     #   2. Exposes port 80 to the Tugboat HTTP proxy
     #   3. Routes requests to the preview URL to this service
     default: true
-    depends: db
+    depends: mysql
     visualdiffs:
       :default:
         - /
@@ -66,4 +66,5 @@ services:
         # Cuts down on image size, makes initial preview loading slower.
         - cd /var/govcms && drush -r "${DOCROOT}" cr -y
 
-  
+
+
