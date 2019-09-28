@@ -58,11 +58,8 @@ services:
         - find "/var/govcms/docroot/sites/default/files" -type d -exec chmod 2775 {} \;
         - find "/var/govcms/docroot/sites/default/files" -type f -exec chmod 0664 {} \;
 
-        - cd /var/govcms && drush -r "${DOCROOT}" ev 'global $config_directories; var_dump($config_directories);'
-        - ls /var/lib/tugboat/config/sync
-
         # Install the site.
-        - cd /var/govcms && drush -r "${DOCROOT}" core:status
+        - rm -rf /var/govcms/docroot/profiles/govcms/config/sync # Presence break the installer, not sure where it comes from!
         - cd /var/govcms && drush -r "${DOCROOT}" site:install govcms install_configure_form.update_status_module='array(FALSE,FALSE)' -y -d
         - cd /var/govcms && drush -r "${DOCROOT}" pm:enable govcms8_default_content -y
 
