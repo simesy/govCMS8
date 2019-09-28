@@ -66,3 +66,4 @@ services:
         # Cuts down on image size, makes initial preview loading slower.
         - cd /var/govcms && drush -r "${DOCROOT}" cr -y
 
+  
