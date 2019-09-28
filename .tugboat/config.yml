@@ -1,7 +1,7 @@
 services:
 
   mysql:
-    image: quay.io/perriea/alpine-mysql
+    image: simesy/tugboat-mysql
 
   app:
     image: tugboatqa/php:7.2-apache
