@@ -59,6 +59,10 @@ services:
         - find "/var/govcms/docroot/sites/default/files" -type f -exec chmod 0664 {} \;
 
         # Install the site.
-        - cd /var/govcms && drush -r /var/govcms/docroot sql:drop --database=tugboat
-        - cd /var/govcms && drush -r /var/govcms/docroot site-install govcms install_configure_form.update_status_module='array(FALSE,FALSE)' -y
-        - cd /var/govcms && drush -r /var/govcms/docroot pm-enable govcms8_default_content -y
+        - cd /var/govcms && drush -r "${DOCROOT}" st
+        - cd /var/govcms && drush -r "${DOCROOT}" sql:drop --database=tugboat
+        - cd /var/govcms && drush -r "${DOCROOT}" site-install govcms install_configure_form.update_status_module='array(FALSE,FALSE)' -y
+        - cd /var/govcms && drush -r "${DOCROOT}" pm-enable govcms8_default_content -y
+
+        # Cuts down on image size, makes initial preview loading slower.
+        - cd /var/govcms && drush -r "${DOCROOT}" cr -y
