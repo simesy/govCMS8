@@ -3,7 +3,7 @@
 $databases = [];
 
 $config_directories = array(
-  CONFIG_SYNC_DIRECTORY => '/var/lib/tugboat/config/sync',
+  CONFIG_SYNC_DIRECTORY => 'sites/default/files/sync',
 );
 
 $settings['hash_salt'] = 'djfu983roawei90tk3;mva9023i9523';
