@@ -35,7 +35,7 @@ services:
 
       # Commands when refreshing an existing preview.
       update:
-        # Updating an existing preview doesn't make sense when testing the distro stand-alone.
+        # We have no external assets to update for testing the distro.
 
       # Commands when building a new branch/PR update.
       build:
