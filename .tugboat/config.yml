@@ -1,7 +1,7 @@
 services:
 
   mysql:
-    image: simesy/tugboat-mysql
+    image: tugboatqa/mysql:5
 
   app:
     image: tugboatqa/php:7.2-apache
